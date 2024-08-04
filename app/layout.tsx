@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Ubuntu } from 'next/font/google'
 import '@/styles/globals.css'
+import Header from '@/components/Header'
 
 const inter = Ubuntu({
 	subsets: ['latin'],
@@ -19,7 +20,15 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>{children}</body>
+			<body className={inter.className}>
+				<div className="w-full max-w-[940px] h-[600px] p-4 bg-white rounded-lg flex justify-between">
+					<aside className="w-[30%] h-full">
+						<Header />
+					</aside>
+
+					<main>{children}</main>
+				</div>
+			</body>
 		</html>
 	)
 }
