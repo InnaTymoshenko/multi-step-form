@@ -21,9 +21,9 @@ const Select = ({ data }: Props) => {
 				<p>You have the option of monthly or yearly billing.</p>
 				<div className="flex flex-col gap-8">
 					<div className="w-full flex justify-between gap-2">
-						{data.map((d, i) => (
+						{data.map(d => (
 							<div
-								key={i}
+								key={d.title}
 								className="w-[30%] border border-gray-100 rounded p-4 flex flex-col justify-between items-start"
 							>
 								<div className="h-20">
@@ -31,7 +31,7 @@ const Select = ({ data }: Props) => {
 								</div>
 
 								<div className="w-full min-h-16 flex flex-col h-12 text-md">
-									<p className="text-lg text-blue-300 font-semibold mb-0">{d.title}</p>
+									<h2>{d.title}</h2>
 									{monthly ? (
 										<>
 											<span>{`$${d.yearly}/yr`}</span>

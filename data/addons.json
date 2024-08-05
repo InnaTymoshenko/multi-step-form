@@ -1,0 +1,17 @@
+[
+	{
+		"title": "Online service",
+		"description": "Access to multiplayer games",
+		"bonus": "1"
+	},
+	{
+		"title": "Larger storage",
+		"description": "Extra 1TB of cloud save",
+		"bonus": "2"
+	},
+	{
+		"title": "Customizable Profile",
+		"description": "Custom theme on your profile",
+		"bonus": "2"
+	}
+]
