@@ -8,7 +8,7 @@ const PersonalInfo = (props: Props) => {
 	return (
 		<div className="w-full h-full flex flex-col justify-between">
 			<div className="">
-				<h1 className="text-3xl text-blue-300 font-bold tracking-widest">Personal info</h1>
+				<h1>Personal info</h1>
 				<p>Please provide your name, email address, and phone number.</p>
 				<form action="" className="w-full flex flex-col gap-4">
 					<div className="w-full flex flex-col gap-2 justify-between items-start py-1">

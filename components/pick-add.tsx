@@ -10,7 +10,7 @@ const PickAdd = ({ adds }: Props) => {
 	return (
 		<div className="w-full h-full flex flex-col justify-between">
 			<div className="">
-				<h1 className="text-3xl text-blue-300 font-bold tracking-widest">Pick add-ons</h1>
+				<h1>Pick add-ons</h1>
 				<p>Add-ons help enhance your gaming experience.</p>
 				<div className="flex flex-col gap-4">
 					{adds.map(a => (

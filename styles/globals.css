@@ -11,6 +11,10 @@
 		@apply text-gray-200 text-lg mt-2 mb-6 font-medium;
 	}
 
+	h1 {
+		@apply text-3xl text-blue-300 font-bold tracking-wide;
+	}
+
 	h2 {
 		@apply text-lg text-blue-300 font-semibold mb-0 tracking-wider;
 	}

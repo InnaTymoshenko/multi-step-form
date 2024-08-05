@@ -17,7 +17,7 @@ const Select = ({ data }: Props) => {
 	return (
 		<div className="w-full h-full flex flex-col justify-between">
 			<div className="">
-				<h1 className="text-3xl text-blue-300 font-bold tracking-widest">Select your plan</h1>
+				<h1>Select your plan</h1>
 				<p>You have the option of monthly or yearly billing.</p>
 				<div className="flex flex-col gap-8">
 					<div className="w-full flex justify-between gap-2">

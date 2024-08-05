@@ -25,7 +25,7 @@ const buttonStyles = cva(
 			variant: {
 				primary: 'bg-blue-300 text-white hover:brightness-200 active:brightness-200',
 				ghost: 'bg-transparent font-semibold text-gray-200 hover:text-blue-300 active:text-blue-300',
-				clear: 'bg-button-clear text-primary hover:bg-button-clear-hover active:bg-button-clear-active',
+				clear: 'bg-blue-200 text-white hover:bg-blue-200/60 active:bg-blue-200/60',
 				// accent: 'bg-button-accent text-foreground hover:bg-button-accent-hover active:bg-button-accent-active',
 				positive: 'bg-blue-300 text-white'
 				// warning: 'bg-button-warning text-foreground hover:bg-button-warning-hover active:bg-button-warning-active',
