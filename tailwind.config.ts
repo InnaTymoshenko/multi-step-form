@@ -64,7 +64,8 @@ const config: Config = {
 		borderRadius: {
 			none: '0',
 			sm: '.25rem',
-			DEFAULT: '.75rem',
+			DEFAULT: '.5rem',
+			md: '.75rem',
 			lg: '1rem',
 			full: '9999px'
 		},

@@ -4,7 +4,11 @@
 
 @layer base {
 	body {
-		@apply w-screen h-screen m-0 py-44 bg-gray-50 text-gray-200 flex justify-center items-center box-border;
+		@apply w-screen h-screen m-0 py-32 bg-gray-50 text-gray-200 flex justify-center items-start box-border;
+	}
+
+	p {
+		@apply text-gray-200 text-lg mt-2 mb-6 font-medium;
 	}
 }
 

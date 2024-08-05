@@ -21,12 +21,11 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<div className="w-full max-w-[940px] h-[600px] p-4 bg-white rounded-lg flex justify-between">
+				<div className="w-full max-w-[940px] h-[603px] p-4 bg-white rounded-lg flex justify-between shadow-2xl">
 					<aside className="w-[30%] h-full">
 						<Header />
 					</aside>
-
-					<main>{children}</main>
+					<main className="w-[65%] h-full ">{children}</main>
 				</div>
 			</body>
 		</html>

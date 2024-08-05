@@ -6,7 +6,7 @@ type Props = {}
 
 const Header = (props: Props) => {
 	return (
-		<div className="w-full h-full bg-[url('/images/bg-sidebar-desktop.svg')] ">
+		<div className="w-full h-full bg-[url('/images/bg-sidebar-desktop.svg')] bg-cover">
 			<NavTabs items={navTabsConfig} />
 		</div>
 	)

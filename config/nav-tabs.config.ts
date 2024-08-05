@@ -10,7 +10,7 @@ type NavTabItem = {
 export const navTabsConfig: NavTabItem[] = [
 	{
 		title: 'Your info',
-		href: '/personal'
+		href: '/'
 	},
 	{
 		title: 'Select plan',
