@@ -1,0 +1,23 @@
+[
+	{
+		"title": "Arcade",
+		"image": "./images/icon-arcade.svg",
+		"monthly": "9",
+		"yearly": "90",
+		"bonus": "2 months free"
+	},
+	{
+		"title": "Advanced",
+		"image": "./images/icon-advanced.svg",
+		"monthly": "12",
+		"yearly": "120",
+		"bonus": "2 months free"
+	},
+	{
+		"title": "Pro",
+		"image": "./images/icon-pro.svg",
+		"monthly": "15",
+		"yearly": "150",
+		"bonus": "2 months free"
+	}
+]

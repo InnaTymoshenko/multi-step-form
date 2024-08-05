@@ -10,7 +10,6 @@ const PersonalInfo = (props: Props) => {
 			<div className="">
 				<h1 className="text-3xl text-blue-300 font-bold tracking-widest">Personal info</h1>
 				<p>Please provide your name, email address, and phone number.</p>
-				{/* <div>	</div> */}
 				<form action="" className="w-full flex flex-col gap-4">
 					<div className="w-full flex flex-col gap-2 justify-between items-start py-1">
 						<label htmlFor="" className="text-blue-300 text-md font-semibold">
@@ -19,7 +18,7 @@ const PersonalInfo = (props: Props) => {
 						<input
 							type="text"
 							placeholder="e.g. Stephen King"
-							className="w-full h-12 border border-gray-100 rounded pl-3"
+							className="w-full h-12 border border-gray-100 rounded pl-3 active:border-blue-200 active:border-spacing-1"
 						/>
 					</div>
 					<div className="w-full flex flex-col gap-2 justify-between items-start py-1">
@@ -48,7 +47,6 @@ const PersonalInfo = (props: Props) => {
 				<ButtonLink variant={'primary'} size={'large'} href={'/select'}>
 					Next Step
 				</ButtonLink>
-				{/* <button></button> */}
 			</div>
 		</div>
 	)
