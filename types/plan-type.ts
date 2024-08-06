@@ -4,7 +4,7 @@ interface IPlan {
 	monthly: number
 	yearly: number
 	bonus: string
-	choose?: boolean
-	id?: string
-	added?: IAdd[]
+	choose: boolean
+	id: string
+	added: IAdd[]
 }

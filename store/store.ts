@@ -128,9 +128,9 @@ export const useMultiForm = create<IMultiFormStore>()(
 				phone: ''
 			},
 			plan: {
-				name: '',
 				title: '',
-				price: 0
+				price: 0,
+				added: []
 			}
 		},
 		isChoose: 'monthly',
@@ -150,7 +150,7 @@ export const useMultiForm = create<IMultiFormStore>()(
 				const newPlan = {
 					title: selectPlan.title,
 					price: selectPlan.monthly,
-					added: selectPlan.added?.map(add => {
+					added: selectPlan.added.map(add => {
 						return {
 							title: add.title,
 							description: add.description,
@@ -169,7 +169,7 @@ export const useMultiForm = create<IMultiFormStore>()(
 				const newPlan = {
 					title: selectPlan.title,
 					price: selectPlan.yearly,
-					added: selectPlan.added?.map(add => {
+					added: selectPlan.added.map(add => {
 						return {
 							title: add.title,
 							description: add.description,

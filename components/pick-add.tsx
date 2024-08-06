@@ -18,9 +18,11 @@ const PickAdd = () => {
 						? userProduct.plan.added.map(a => (
 								<div
 									key={a.title}
-									className="w-full h-20 border border-gray-100 rounded px-4 flex justify-between items-center"
+									className={`w-full h-20 border  rounded px-4 flex justify-between items-center ${
+										a.checked ? 'border-blue-200 bg-gray-50' : 'border-gray-100 bg-white'
+									}`}
 								>
-									<Checkbox />
+									<Checkbox checked={a.checked} />
 									<div className="w-[70%] text-left">
 										<h2>{a.title}</h2>
 										<p className="my-0">{a.description}</p>
