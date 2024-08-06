@@ -6,7 +6,11 @@ import { Checkbox } from './ui/checkbox'
 import { useMultiForm } from '@/store/store'
 
 const PickAdd = () => {
-	const { userProduct, isChoose } = useMultiForm()
+	const { userProduct, isChoose, toggleCheck } = useMultiForm()
+
+	const handleChecked = (id: string) => {
+		toggleCheck(id)
+	}
 
 	return (
 		<div className="w-full h-full flex flex-col justify-between">
@@ -18,9 +22,10 @@ const PickAdd = () => {
 						? userProduct.plan.added.map(a => (
 								<div
 									key={a.title}
-									className={`w-full h-20 border  rounded px-4 flex justify-between items-center ${
+									className={`w-full h-20 border hover:border-blue-200 cursor-pointer rounded px-4 flex justify-between items-center ${
 										a.checked ? 'border-blue-200 bg-gray-50' : 'border-gray-100 bg-white'
 									}`}
+									onClick={() => handleChecked(a.id)}
 								>
 									<Checkbox checked={a.checked} />
 									<div className="w-[70%] text-left">

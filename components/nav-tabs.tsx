@@ -9,7 +9,9 @@ import { cn } from '@/utils/cn'
 type Props = {}
 
 export const tabStyles = cva(
-	['w-[32px] h-[32px] border border-white rounded-full flex justify-center items-center text-white font-semibold'],
+	[
+		'w-[32px] h-[32px] pointer-events-none border border-white rounded-full flex justify-center items-center text-white font-semibold'
+	],
 	{
 		variants: {
 			selected: {

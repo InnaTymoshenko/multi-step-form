@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 import dataPlan from '@/data/plan.json'
@@ -17,177 +18,214 @@ interface IMultiFormStore {
 	toggleStatus: () => void
 	selectPlan: (id: string) => void
 	addPlan: () => void
+	toggleCheck: (id: string) => void
+	confirmPlan: () => void
 }
 
 export const useMultiForm = create<IMultiFormStore>()(
-	// devtools(
-	//     persist<IMultiFormStore>(
-	(set, get) => ({
-		product: [
-			{
-				title: 'Arcade',
-				image: './images/icon-arcade.svg',
-				monthly: 9,
-				yearly: 90,
-				bonus: '2 months free',
-				choose: true,
-				id: '1',
-				added: [
+	devtools(
+		persist<IMultiFormStore>(
+			(set, get) => ({
+				product: [
 					{
-						title: 'Online service',
-						description: 'Access to multiplayer games',
-						monthly: 1,
-						yearly: 10,
-						checked: true
+						title: 'Arcade',
+						image: './images/icon-arcade.svg',
+						monthly: 9,
+						yearly: 90,
+						bonus: '2 months free',
+						choose: true,
+						id: '1',
+						added: [
+							{
+								title: 'Online service',
+								description: 'Access to multiplayer games',
+								monthly: 1,
+								yearly: 10,
+								checked: true
+							},
+							{
+								title: 'Larger storage',
+								description: 'Extra 1TB of cloud save',
+								monthly: 2,
+								yearly: 20,
+								checked: true
+							},
+							{
+								title: 'Customizable Profile',
+								description: 'Custom theme on your profile',
+								monthly: 2,
+								yearly: 20,
+								checked: false
+							}
+						]
 					},
 					{
-						title: 'Larger storage',
-						description: 'Extra 1TB of cloud save',
-						monthly: 2,
-						yearly: 20,
-						checked: true
+						title: 'Advanced',
+						image: './images/icon-advanced.svg',
+						monthly: 12,
+						yearly: 120,
+						bonus: '2 months free',
+						choose: false,
+						id: '2',
+						added: [
+							{
+								title: 'Online service',
+								description: 'Access to multiplayer games',
+								monthly: 1,
+								yearly: 10,
+								checked: true
+							},
+							{
+								title: 'Larger storage',
+								description: 'Extra 1TB of cloud save',
+								monthly: 2,
+								yearly: 20,
+								checked: true
+							},
+							{
+								title: 'Customizable Profile',
+								description: 'Custom theme on your profile',
+								monthly: 2,
+								yearly: 20,
+								checked: false
+							}
+						]
 					},
 					{
-						title: 'Customizable Profile',
-						description: 'Custom theme on your profile',
-						monthly: 2,
-						yearly: 20,
-						checked: false
+						title: 'Pro',
+						image: './images/icon-pro.svg',
+						monthly: 15,
+						yearly: 150,
+						bonus: '2 months free',
+						choose: false,
+						id: '3',
+						added: [
+							{
+								title: 'Online service',
+								description: 'Access to multiplayer games',
+								monthly: 1,
+								yearly: 10,
+								checked: true
+							},
+							{
+								title: 'Larger storage',
+								description: 'Extra 1TB of cloud save',
+								monthly: 2,
+								yearly: 20,
+								checked: true
+							},
+							{
+								title: 'Customizable Profile',
+								description: 'Custom theme on your profile',
+								monthly: 2,
+								yearly: 20,
+								checked: false
+							}
+						]
 					}
-				]
-			},
-			{
-				title: 'Advanced',
-				image: './images/icon-advanced.svg',
-				monthly: 12,
-				yearly: 120,
-				bonus: '2 months free',
-				choose: false,
-				id: '2',
-				added: [
-					{
-						title: 'Online service',
-						description: 'Access to multiplayer games',
-						monthly: 1,
-						yearly: 10,
-						checked: true
+				],
+				userProduct: {
+					user: {
+						name: '',
+						email: '',
+						phone: ''
 					},
-					{
-						title: 'Larger storage',
-						description: 'Extra 1TB of cloud save',
-						monthly: 2,
-						yearly: 20,
-						checked: true
-					},
-					{
-						title: 'Customizable Profile',
-						description: 'Custom theme on your profile',
-						monthly: 2,
-						yearly: 20,
-						checked: false
+					plan: {
+						id: '',
+						title: '',
+						price: 0,
+						added: []
 					}
-				]
-			},
-			{
-				title: 'Pro',
-				image: './images/icon-pro.svg',
-				monthly: 15,
-				yearly: 150,
-				bonus: '2 months free',
-				choose: false,
-				id: '3',
-				added: [
-					{
-						title: 'Online service',
-						description: 'Access to multiplayer games',
-						monthly: 1,
-						yearly: 10,
-						checked: true
-					},
-					{
-						title: 'Larger storage',
-						description: 'Extra 1TB of cloud save',
-						monthly: 2,
-						yearly: 20,
-						checked: true
-					},
-					{
-						title: 'Customizable Profile',
-						description: 'Custom theme on your profile',
-						monthly: 2,
-						yearly: 20,
-						checked: false
+				},
+				isChoose: 'monthly',
+				toggleStatus: () => {
+					set({
+						isChoose: get().isChoose == 'monthly' ? 'yearly' : 'monthly'
+					})
+				},
+				selectPlan: id => {
+					set({
+						product: get().product.map(p => (p.id === id ? { ...p, choose: true } : { ...p, choose: false }))
+					})
+				},
+				addPlan: () => {
+					const selectPlan = get().product.find(p => p.choose)
+					if (get().isChoose === 'monthly' && selectPlan) {
+						const newPlan = {
+							id: selectPlan.id,
+							title: selectPlan.title,
+							price: selectPlan.monthly,
+							added: selectPlan.added.map(add => {
+								return {
+									id: uuidv4(),
+									title: add.title,
+									description: add.description,
+									price: add.monthly,
+									checked: add.checked
+								}
+							})
+						}
+						set({
+							userProduct: {
+								user: get().userProduct.user,
+								plan: newPlan
+							}
+						})
+					} else if (get().isChoose === 'yearly' && selectPlan) {
+						const newPlan = {
+							id: selectPlan.id,
+							title: selectPlan.title,
+							price: selectPlan.yearly,
+							added: selectPlan.added.map(add => {
+								return {
+									id: uuidv4(),
+									title: add.title,
+									description: add.description,
+									price: add.yearly,
+									checked: add.checked
+								}
+							})
+						}
+						set({
+							userProduct: {
+								user: get().userProduct.user,
+								plan: newPlan
+							}
+						})
 					}
-				]
-			}
-		],
-		userProduct: {
-			user: {
-				name: '',
-				email: '',
-				phone: ''
-			},
-			plan: {
-				title: '',
-				price: 0,
-				added: []
-			}
-		},
-		isChoose: 'monthly',
-		toggleStatus: () => {
-			set({
-				isChoose: get().isChoose == 'monthly' ? 'yearly' : 'monthly'
-			})
-		},
-		selectPlan: id => {
-			set({
-				product: get().product.map(p => (p.id === id ? { ...p, choose: true } : { ...p, choose: false }))
-			})
-		},
-		addPlan: () => {
-			const selectPlan = get().product.find(p => p.choose)
-			if (get().isChoose === 'monthly' && selectPlan) {
-				const newPlan = {
-					title: selectPlan.title,
-					price: selectPlan.monthly,
-					added: selectPlan.added.map(add => {
-						return {
-							title: add.title,
-							description: add.description,
-							price: add.monthly,
-							checked: add.checked
+				},
+				toggleCheck: id => {
+					set({
+						userProduct: {
+							...get().userProduct,
+							plan: {
+								...get().userProduct.plan,
+								added: get().userProduct.plan.added.map(add =>
+									add.id === id ? { ...add, checked: !add.checked } : add
+								)
+							}
+						}
+					})
+				},
+				confirmPlan: () => {
+					set({
+						userProduct: {
+							user: {
+								name: '',
+								email: '',
+								phone: ''
+							},
+							plan: {
+								id: '',
+								title: '',
+								price: 0,
+								added: []
+							}
 						}
 					})
 				}
-				set({
-					userProduct: {
-						user: get().userProduct.user,
-						plan: newPlan
-					}
-				})
-			} else if (get().isChoose === 'yearly' && selectPlan) {
-				const newPlan = {
-					title: selectPlan.title,
-					price: selectPlan.yearly,
-					added: selectPlan.added.map(add => {
-						return {
-							title: add.title,
-							description: add.description,
-							price: add.yearly,
-							checked: add.checked
-						}
-					})
-				}
-				set({
-					userProduct: {
-						user: get().userProduct.user,
-						plan: newPlan
-					}
-				})
-			}
-		}
-	})
-	//         {name:'multi-step-form'}
-	//     )
-	// )
+			}),
+			{ name: 'multi-step-form' }
+		)
+	)
 )

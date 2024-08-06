@@ -34,7 +34,7 @@ const Select = () => {
 							<div
 								key={d.title}
 								onClick={() => handleSelectPlan(d.id)}
-								className={`w-[30%] cursor-pointer min-h-40 border rounded p-4 flex flex-col justify-between items-start ${
+								className={`w-[30%] cursor-pointer hover:border-blue-200 min-h-40 border rounded p-4 flex flex-col justify-between items-start ${
 									d.choose ? 'border-blue-200 bg-gray-50' : 'border-gray-100 bg-white'
 								}`}
 							>
