@@ -2,16 +2,19 @@
 	{
 		"title": "Online service",
 		"description": "Access to multiplayer games",
-		"bonus": 1
+		"monthly": 1,
+		"yearly": 10
 	},
 	{
 		"title": "Larger storage",
 		"description": "Extra 1TB of cloud save",
-		"bonus": 2
+		"monthly": 2,
+		"yearly": 20
 	},
 	{
 		"title": "Customizable Profile",
 		"description": "Custom theme on your profile",
-		"bonus": 2
+		"monthly": 2,
+		"yearly": 20
 	}
 ]

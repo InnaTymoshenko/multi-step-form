@@ -1,6 +1,7 @@
 interface IAdd {
 	title: string
 	description: string
-	bonus: number
+	monthly: number
+	yearly: number
 	checked?: boolean
 }
