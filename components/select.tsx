@@ -24,13 +24,13 @@ const Select = ({ data }: Props) => {
 						{data.map(d => (
 							<div
 								key={d.title}
-								className="w-[30%] border border-gray-100 rounded p-4 flex flex-col justify-between items-start"
+								className="w-[30%] min-h-40 border border-gray-100 rounded p-4 flex flex-col justify-between items-start"
 							>
 								<div className="h-20">
 									<img src={`/${d.image}`} alt="" />
 								</div>
 
-								<div className="w-full min-h-16 flex flex-col h-12 text-md">
+								<div className="w-full min-h-8 flex flex-col gap-1 text-md justify-between">
 									<h2>{d.title}</h2>
 									{monthly ? (
 										<>
