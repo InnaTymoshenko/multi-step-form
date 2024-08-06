@@ -42,7 +42,7 @@ const Summary = (props: Props) => {
 				<ButtonLink variant={'ghost'} size={'large'} href={'/add'}>
 					Go Back
 				</ButtonLink>
-				<ButtonLink variant={'clear'} size={'large'} href={'/'}>
+				<ButtonLink variant={'clear'} size={'large'} href={'/summary/finished'}>
 					Confirm
 				</ButtonLink>
 			</div>
