@@ -41,17 +41,20 @@ const NavTabs = ({ className, children, items, ...props }: NavTabsProps) => {
 	const pathname = usePathname()
 
 	return (
-		<div className={cn('flex flex-col gap-8 pt-8', className)} {...props}>
+		<div
+			className={cn('w-full flex lg:flex-col sx:justify-center sx:flex-row lg:gap-8 sx:gap-4 pt-8', className)}
+			{...props}
+		>
 			{items.map((item, index) => {
 				return (
-					<div key={index} className="flex gap-4 px-8 items-center">
+					<div key={index} className="flex gap-4 lg:px-8 sx:px-0 items-center">
 						<NavTab
 							href={item.href}
 							selected={segment === null ? item.href === pathname : item.href.includes(String(segment))}
 						>
 							{index + 1}
 						</NavTab>
-						<div className="flex flex-col justify-between items-start tracking-widest">
+						<div className="sx:hidden lg:flex flex-col justify-between items-start tracking-widest">
 							<span className="text-sm text-blue-100">{`STEP ${index + 1}`}</span>
 							<strong className="text-lg text-white">{item.title}</strong>
 						</div>

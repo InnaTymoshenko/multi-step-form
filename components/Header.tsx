@@ -1,14 +1,30 @@
+'use client'
+
 import React from 'react'
 import { NavTabs } from './nav-tabs'
 import { navTabsConfig } from '@/config/nav-tabs.config'
+import { useScreenSize, SCREEN_SIZES } from '@/utils/hooks'
 
 type Props = {}
 
 const Header = (props: Props) => {
+	const screenSize = useScreenSize()
+
 	return (
-		<div className="w-full h-full bg-[url('/images/bg-sidebar-desktop.svg')] bg-cover">
-			<NavTabs items={navTabsConfig} />
-		</div>
+		<>
+			<div
+				style={
+					screenSize === SCREEN_SIZES.MOBILE
+						? {
+								backgroundImage: `url('/images/bg-sidebar-mobile.svg')`
+						  }
+						: { backgroundImage: `url('/images/bg-sidebar-desktop.svg')` }
+				}
+				className="w-full lg:h-full sx:h-[25vh] header"
+			>
+				<NavTabs items={navTabsConfig} />
+			</div>
+		</>
 	)
 }
 

@@ -5,7 +5,7 @@ type Props = {}
 
 const SelectPage = (props: Props) => {
 	return (
-		<section className="w-full h-full px-16 py-8">
+		<section className="w-full h-full lg:px-16 lg:py-8 sx:p-0">
 			<Select />
 		</section>
 	)
