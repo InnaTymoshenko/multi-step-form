@@ -7,3 +7,8 @@ export const createNewPlan = (plan: IPlan) => {
 		choose: false
 	}
 }
+
+export const capitalize = (str: string): string => {
+	if (str.length === 0) return ''
+	return str.charAt(0).toUpperCase() + str.slice(1)
+}

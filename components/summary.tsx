@@ -4,6 +4,7 @@ import React from 'react'
 import { ButtonLink } from './ui/button-link'
 import Link from 'next/link'
 import { useMultiForm } from '@/store/store'
+import { capitalize } from '@/utils/method'
 
 const Summary = () => {
 	const { userProduct, isChoose, confirmPlan } = useMultiForm()
@@ -46,7 +47,7 @@ const Summary = () => {
 					<div className="w-ful min-h-20 bg-gray-50 flex flex-col gap-4 rounded p-6">
 						<div className="w-full border-b-2 border-b-gray-100 pb-2 flex justify-between items-center">
 							<div className="w-[90%]">
-								<h2>{`${userProduct.plan.title} (${isChoose.toUpperCase()}) `}</h2>
+								<h2>{`${userProduct.plan.title} (${capitalize(isChoose)}) `}</h2>
 								<Link className="underline hover:text-blue-200" href={'/select'}>
 									Change
 								</Link>
