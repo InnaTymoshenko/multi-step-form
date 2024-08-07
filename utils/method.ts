@@ -1,10 +1,19 @@
 import { v4 as uuidv4 } from 'uuid'
 
-export const createNewPlan = (plan: IPlan) => {
+export const createNewPlan = (plan: IDataPlan, added: IDataAdd[]) => {
+	const newAddType = added.map(add => {
+		return {
+			...add,
+			id: uuidv4(),
+			checked: false
+		}
+	})
+
 	return {
 		...plan,
 		id: uuidv4(),
-		choose: false
+		choose: false,
+		added: newAddType
 	}
 }
 

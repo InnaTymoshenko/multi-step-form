@@ -1,129 +1,33 @@
-import { v4 as uuidv4 } from 'uuid'
 import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 import dataPlan from '@/data/plan.json'
+import adds from '@/data/addons.json'
 import { createNewPlan } from '@/utils/method'
-import { title } from 'process'
 
 type ChooseStatus = 'monthly' | 'yearly'
-interface IUserSelectplan {
+interface IUserSelectPlan {
 	user: IUser
 	plan: IUserProduct
 }
 
 interface IMultiFormStore {
 	product: IPlan[]
-	userProduct: IUserSelectplan
+	userProduct: IUserSelectPlan
 	isChoose: ChooseStatus
 	toggleStatus: () => void
 	selectPlan: (id: string) => void
 	addPlan: () => void
 	toggleCheck: (id: string) => void
-	confirmPlan: () => void
+	confirmPlan: (data: IUserSelectPlan) => void
 }
 
 export const useMultiForm = create<IMultiFormStore>()(
 	devtools(
 		persist<IMultiFormStore>(
 			(set, get) => ({
-				product: [
-					{
-						title: 'Arcade',
-						image: './images/icon-arcade.svg',
-						monthly: 9,
-						yearly: 90,
-						bonus: '2 months free',
-						choose: true,
-						id: '1',
-						added: [
-							{
-								title: 'Online service',
-								description: 'Access to multiplayer games',
-								monthly: 1,
-								yearly: 10,
-								checked: true
-							},
-							{
-								title: 'Larger storage',
-								description: 'Extra 1TB of cloud save',
-								monthly: 2,
-								yearly: 20,
-								checked: true
-							},
-							{
-								title: 'Customizable Profile',
-								description: 'Custom theme on your profile',
-								monthly: 2,
-								yearly: 20,
-								checked: false
-							}
-						]
-					},
-					{
-						title: 'Advanced',
-						image: './images/icon-advanced.svg',
-						monthly: 12,
-						yearly: 120,
-						bonus: '2 months free',
-						choose: false,
-						id: '2',
-						added: [
-							{
-								title: 'Online service',
-								description: 'Access to multiplayer games',
-								monthly: 1,
-								yearly: 10,
-								checked: true
-							},
-							{
-								title: 'Larger storage',
-								description: 'Extra 1TB of cloud save',
-								monthly: 2,
-								yearly: 20,
-								checked: true
-							},
-							{
-								title: 'Customizable Profile',
-								description: 'Custom theme on your profile',
-								monthly: 2,
-								yearly: 20,
-								checked: false
-							}
-						]
-					},
-					{
-						title: 'Pro',
-						image: './images/icon-pro.svg',
-						monthly: 15,
-						yearly: 150,
-						bonus: '2 months free',
-						choose: false,
-						id: '3',
-						added: [
-							{
-								title: 'Online service',
-								description: 'Access to multiplayer games',
-								monthly: 1,
-								yearly: 10,
-								checked: true
-							},
-							{
-								title: 'Larger storage',
-								description: 'Extra 1TB of cloud save',
-								monthly: 2,
-								yearly: 20,
-								checked: true
-							},
-							{
-								title: 'Customizable Profile',
-								description: 'Custom theme on your profile',
-								monthly: 2,
-								yearly: 20,
-								checked: false
-							}
-						]
-					}
-				],
+				product: dataPlan.map(data => {
+					return createNewPlan(data, adds)
+				}),
 				userProduct: {
 					user: {
 						name: '',
@@ -134,7 +38,9 @@ export const useMultiForm = create<IMultiFormStore>()(
 						id: '',
 						title: '',
 						price: 0,
-						added: []
+						added: [],
+						total: 0,
+						date: ''
 					}
 				},
 				isChoose: 'monthly',
@@ -149,15 +55,17 @@ export const useMultiForm = create<IMultiFormStore>()(
 					})
 				},
 				addPlan: () => {
-					const selectPlan = get().product.find(p => p.choose)
+					const selectPlan: IPlan | undefined = get().product.find(p => p.choose)
 					if (get().isChoose === 'monthly' && selectPlan) {
 						const newPlan = {
 							id: selectPlan.id,
 							title: selectPlan.title,
 							price: selectPlan.monthly,
+							total: 0,
+							date: '',
 							added: selectPlan.added.map(add => {
 								return {
-									id: uuidv4(),
+									id: add.id,
 									title: add.title,
 									description: add.description,
 									price: add.monthly,
@@ -176,9 +84,11 @@ export const useMultiForm = create<IMultiFormStore>()(
 							id: selectPlan.id,
 							title: selectPlan.title,
 							price: selectPlan.yearly,
+							total: 0,
+							date: '',
 							added: selectPlan.added.map(add => {
 								return {
-									id: uuidv4(),
+									id: add.id,
 									title: add.title,
 									description: add.description,
 									price: add.yearly,
@@ -207,21 +117,9 @@ export const useMultiForm = create<IMultiFormStore>()(
 						}
 					})
 				},
-				confirmPlan: () => {
+				confirmPlan: data => {
 					set({
-						userProduct: {
-							user: {
-								name: '',
-								email: '',
-								phone: ''
-							},
-							plan: {
-								id: '',
-								title: '',
-								price: 0,
-								added: []
-							}
-						}
+						userProduct: data
 					})
 				}
 			}),

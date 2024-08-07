@@ -34,8 +34,7 @@ const Summary = () => {
 			}
 		}
 
-		confirmPlan()
-		console.log(finished)
+		confirmPlan(finished)
 	}
 
 	return (
