@@ -3,16 +3,16 @@
 import React from 'react'
 import { NavTabs } from './nav-tabs'
 import { navTabsConfig } from '@/config/nav-tabs.config'
-import { useScreenSize, SCREEN_SIZES } from '@/utils/hooks'
+import useWindowWidth from '@/utils/hooks'
 
 const Header = () => {
-	const screenSize = useScreenSize()
+	const windowWidth = useWindowWidth()
 
 	return (
 		<>
 			<div
 				style={
-					screenSize === SCREEN_SIZES.MOBILE
+					windowWidth < 960
 						? {
 								backgroundImage: `url('/images/bg-sidebar-mobile.svg')`
 						  }
