@@ -26,11 +26,7 @@ const buttonStyles = cva(
 				primary: 'bg-blue-300 text-white hover:brightness-200 active:brightness-200',
 				ghost: 'bg-transparent font-semibold text-gray-200 hover:text-blue-300 active:text-blue-300',
 				clear: 'bg-blue-200 text-white hover:bg-blue-200/60 active:bg-blue-200/60',
-				// accent: 'bg-button-accent text-foreground hover:bg-button-accent-hover active:bg-button-accent-active',
 				positive: 'bg-blue-300 text-white'
-				// warning: 'bg-button-warning text-foreground hover:bg-button-warning-hover active:bg-button-warning-active',
-				// danger: 'bg-button-danger text-foreground hover:bg-button-danger-hover active:bg-button-danger-active',
-				// link: '!p-0 !h-auto underline-offset-4 hover:underline'
 			},
 			error: {
 				true: 'bg-danger-light border-danger focus:bg-danger-light placeholder:text-transparent'
@@ -43,10 +39,7 @@ const buttonStyles = cva(
 			size: {
 				small: 'p-1 w-12 h-6',
 				medium: 'px-4 gap-3 text-md h-10',
-				large: 'px-6 gap-4 text-lg h-12',
-				'icon-small': 'h-8 w-8',
-				'icon-medium': 'h-10 w-10',
-				'icon-large': 'h-12 w-12'
+				large: 'px-6 gap-4 text-lg h-12'
 			},
 			shape: {
 				rectangle: 'rounded',

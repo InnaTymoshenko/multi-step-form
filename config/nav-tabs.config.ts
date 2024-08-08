@@ -3,10 +3,6 @@ type NavTabItem = {
 	href: string
 }
 
-// interface NavTabsConfig {
-// 	items: NavTabItem[]
-// }
-
 export const navTabsConfig: NavTabItem[] = [
 	{
 		title: 'Your info',

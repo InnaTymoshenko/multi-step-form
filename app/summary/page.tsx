@@ -1,9 +1,8 @@
+'use client'
+
 import Summary from '@/components/summary'
-import React from 'react'
 
-type Props = {}
-
-const SummaryPage = (props: Props) => {
+const SummaryPage = () => {
 	return (
 		<>
 			<Summary />

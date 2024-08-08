@@ -1,6 +1,6 @@
-// 'use client'
+'use client'
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 export const SCREEN_SIZES = {
 	MOBILE: 'mobile',

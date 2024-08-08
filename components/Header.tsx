@@ -5,9 +5,7 @@ import { NavTabs } from './nav-tabs'
 import { navTabsConfig } from '@/config/nav-tabs.config'
 import { useScreenSize, SCREEN_SIZES } from '@/utils/hooks'
 
-type Props = {}
-
-const Header = (props: Props) => {
+const Header = () => {
 	const screenSize = useScreenSize()
 
 	return (
@@ -20,7 +18,7 @@ const Header = (props: Props) => {
 						  }
 						: { backgroundImage: `url('/images/bg-sidebar-desktop.svg')` }
 				}
-				className="w-full lg:h-full sx:h-[25vh] header"
+				className={`w-full lg:h-full sx:h-[25vh] header`}
 			>
 				<NavTabs items={navTabsConfig} />
 			</div>

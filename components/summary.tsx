@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import { ButtonLink } from './ui/button-link'
 import Link from 'next/link'
+import { ButtonLink } from './ui/button-link'
 import { useMultiForm } from '@/store/store'
 import { capitalize } from '@/utils/method'
 
@@ -35,6 +35,7 @@ const Summary = () => {
 		}
 
 		confirmPlan(finished)
+		console.log(finished)
 	}
 
 	return (

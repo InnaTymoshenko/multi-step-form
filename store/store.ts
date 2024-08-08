@@ -124,20 +124,12 @@ export const useMultiForm = create<IMultiFormStore>()(
 					})
 				},
 				addUser: data => {
-					const newPlan: IPlan[] = get().product.map(plan => {
-						if (plan.title === 'Arcade') {
-							return {
-								...plan,
-								choose: true
-							}
-						}
-						plan.added[0].checked = true
-						plan.added[1].checked = true
-						return plan
-					})
-
 					set({
-						product: newPlan,
+						product: get().product.map(plan => {
+							plan.added[0].checked = true
+							plan.added[1].checked = true
+							return plan.title === 'Arcade' ? { ...plan, choose: true } : plan
+						}),
 						userProduct: {
 							user: data,
 							plan: get().userProduct.plan
