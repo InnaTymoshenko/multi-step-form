@@ -19,6 +19,7 @@ interface IMultiFormStore {
 	addPlan: () => void
 	toggleCheck: (id: string) => void
 	confirmPlan: (data: IUserSelectPlan) => void
+	addUser: (data: IUser) => void
 }
 
 export const useMultiForm = create<IMultiFormStore>()(
@@ -120,6 +121,27 @@ export const useMultiForm = create<IMultiFormStore>()(
 				confirmPlan: data => {
 					set({
 						userProduct: data
+					})
+				},
+				addUser: data => {
+					const newPlan: IPlan[] = get().product.map(plan => {
+						if (plan.title === 'Arcade') {
+							return {
+								...plan,
+								choose: true
+							}
+						}
+						plan.added[0].checked = true
+						plan.added[1].checked = true
+						return plan
+					})
+
+					set({
+						product: newPlan,
+						userProduct: {
+							user: data,
+							plan: get().userProduct.plan
+						}
 					})
 				}
 			}),
