@@ -11,14 +11,9 @@ const Header = () => {
 	return (
 		<>
 			<div
-				style={
-					windowWidth < 960
-						? {
-								backgroundImage: `url('/images/bg-sidebar-mobile.svg')`
-						  }
-						: { backgroundImage: `url('/images/bg-sidebar-desktop.svg')` }
-				}
-				className={`w-full lg:h-full sx:h-[25vh] header`}
+				className={` ${
+					windowWidth < 960 ? 'bg-sidebar-mobile' : 'bg-sidebar-desktop'
+				} w-full lg:h-full sx:h-[25vh] header`}
 			>
 				<NavTabs items={navTabsConfig} />
 			</div>

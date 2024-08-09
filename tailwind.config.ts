@@ -69,6 +69,9 @@ const config: Config = {
 			lg: '1rem',
 			full: '9999px'
 		},
+		fontFamily: {
+			sans: 'Ubuntu, sans-serif'
+		},
 		fontSize: {
 			us: ['10px', '12px'],
 			sm: ['12px', '16px'],
@@ -111,7 +114,10 @@ const config: Config = {
 			primary: 'rgba(var(--color-white))'
 		}),
 		extend: {
-			backgroundImage: {}
+			backgroundImage: {
+				'sidebar-desktop': "url('/images/bg-sidebar-desktop.svg')",
+				'sidebar-mobile': "url('/images/bg-sidebar-mobile.svg')"
+			}
 		}
 	},
 
