@@ -10,11 +10,7 @@ const Header = () => {
 
 	return (
 		<>
-			<div
-				className={` ${
-					windowWidth < 960 ? 'bg-sidebar-mobile' : 'bg-sidebar-desktop'
-				} w-full lg:h-full sx:h-[25vh] header`}
-			>
+			<div className={`lg:bg-sidebar-desktop sx:bg-sidebar-mobile w-full lg:h-full sx:h-[25vh] header`}>
 				<NavTabs items={navTabsConfig} />
 			</div>
 		</>
