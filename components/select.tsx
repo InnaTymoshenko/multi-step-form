@@ -35,7 +35,7 @@ const Select = () => {
 								<div
 									key={d.title}
 									onClick={() => handleSelectPlan(d.id)}
-									className={`lg:w-[30%] sx:w-full cursor-pointer hover:border-blue-200 border rounded p-4 flex lg:flex-col sx:flex-row sx:gap-4 lg:gap-12 lg:justify-between sx:justify-start lg:items-start sx:items-center ${
+									className={`lg:w-[30%] sx:w-full cursor-pointer hover:border-blue-200 border rounded lg:p-4 sx:p-2 flex lg:flex-col sx:flex-row sx:gap-4 lg:gap-12 lg:justify-between sx:justify-start lg:items-start sx:items-center ${
 										d.choose ? 'border-blue-200 bg-gray-50' : 'border-gray-100 bg-white'
 									}`}
 								>
