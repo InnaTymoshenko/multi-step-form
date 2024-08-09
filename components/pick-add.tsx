@@ -14,7 +14,7 @@ const PickAdd = () => {
 
 	return (
 		<div className="w-full h-full flex flex-col gap-6 justify-between lg:p-0 sx:pb-6">
-			<div className="w-full lg:p-0 sx:px-3 relative sx:h-[60vh] lg:min-h-[50%] sx:bg-gray-50 lg:bg-white">
+			<div className="w-full lg:p-0 sx:px-3 relative sx:h-[65vh] lg:min-h-[50%] sx:bg-gray-50 lg:bg-white">
 				<div className="bg-white lg:w-full sx:w-[90%] absolute lg:top-0 sx:top-[-10%] lg:left-0 sx:left-[5%] sx:py-8 sx:px-4 lg:p-0 rounded sx:shadow-xl lg:shadow-none">
 					<h1>Pick add-ons</h1>
 					<p>Add-ons help enhance your gaming experience.</p>
